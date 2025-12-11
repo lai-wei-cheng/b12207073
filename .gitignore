@@ -33,6 +33,8 @@ wheels/
 # OS
 .DS_Store
 Thumbs.db
+__MACOSX/
+._*
 
 # Large files
 *.h5
@@ -42,3 +44,12 @@ Thumbs.db
 # Temporary
 *.tmp
 *.log
+
+# Non-assignment files
+analyze_excel.py
+check_gpu.py
+girl.jpg
+old_13_exercises.ipynb
+
+# Notebooks
+*.ipynb
