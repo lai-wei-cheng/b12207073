@@ -1,0 +1,93 @@
+{
+  "model_name": "Emotion Recognition (7-class)",
+  "architecture": "MobileNetV2 Transfer Learning + 熵值過濾",
+  "input_shape": [
+    224,
+    224,
+    3
+  ],
+  "classes": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "disgust",
+    "fear",
+    "surprise"
+  ],
+  "class_count": 7,
+  "training_config": {
+    "dataset_size": 1096,
+    "train_size": 876,
+    "val_size": 220,
+    "epochs_head": 5,
+    "epochs_finetune": 20,
+    "batch_size": 32
+  },
+  "preprocessing_config": {
+    "entropy_threshold": 1.8,
+    "oversample_factors": {
+      "neutral": 2,
+      "disgust": 2,
+      "fear": 2
+    },
+    "augmentation": {
+      "rotation_range": 20,
+      "width_shift_range": 0.2,
+      "height_shift_range": 0.2,
+      "shear_range": 0.1,
+      "zoom_range": 0.2,
+      "horizontal_flip": true
+    }
+  },
+  "performance": {
+    "val_accuracy": 0.6091,
+    "val_loss": 0.9972,
+    "macro_f1": 0.4807,
+    "weighted_f1": 0.6029
+  },
+  "per_class_performance": {
+    "neutral": {
+      "precision": 0.5,
+      "recall": 0.143,
+      "f1": 0.222
+    },
+    "happy": {
+      "precision": 0.857,
+      "recall": 0.923,
+      "f1": 0.889
+    },
+    "sad": {
+      "precision": 0.64,
+      "recall": 0.348,
+      "f1": 0.451
+    },
+    "angry": {
+      "precision": 0.437,
+      "recall": 0.792,
+      "f1": 0.563
+    },
+    "disgust": {
+      "precision": 0.923,
+      "recall": 0.333,
+      "f1": 0.49
+    },
+    "fear": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "surprise": {
+      "precision": 0.65,
+      "recall": 0.886,
+      "f1": 0.75
+    }
+  },
+  "notes": [
+    "Entropy filtering (threshold 1.8) removes ambiguous samples with high annotation disagreement",
+    "Mild oversampling (2x) for minority classes: neutral, disgust, fear",
+    "MobileNetV2 base provides efficient inference for real-time use",
+    "Fear class has 0 recall - recommend handling separately or expanding fear samples",
+    "Happy and Surprise classes show strongest performance (recall >0.88)"
+  ]
+}
