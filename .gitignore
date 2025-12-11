@@ -53,3 +53,9 @@ old_13_exercises.ipynb
 
 # Notebooks
 *.ipynb
+
+# Experiment results (not needed)
+confusion_face256.csv
+confusion_face256_hard_ensemble.csv
+confusion_face256_hard_oversample.csv
+confusion_face256_hard_weighted.csv
