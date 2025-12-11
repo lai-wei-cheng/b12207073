@@ -19,7 +19,7 @@
     vlog_emotions.csv          
     vlog_annotated.mp4         
  README.md
- SUBMISSION_SUMMARY.md
+
 ```
 
 
